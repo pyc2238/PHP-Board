@@ -1,0 +1,203 @@
+/* 웹 사이트를 위한 CSS */
+
+
+
+*{margin:0; padding: 0;}
+
+/****************index.php CSS****************/
+
+  #m-container{
+    background-color: #f4f4f4;
+  }
+
+  #s-container{
+    width:80%;
+    height: 900px;
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border : 1px solid #bcbcbc;
+    background-color: white;
+  }
+
+ /*********************************************/
+
+ /****************header css*********************/
+
+  
+
+
+ header .main-nav-scrolled{background-color: rgba(0,0,0,0.4);}
+  .navbar-light .navbar-nav .nav-link{color: #fff;}
+  .navbar-light .navbar-nav .active .nav-link{color: #00e0d0;}
+
+nav{
+  height:80px;
+}
+
+#t-header{
+  box-shadow: 0 4px 0.5px -4px gray;
+  background-color: #ffffff;
+  border:1px solid hsl(0, 0%, 74%);
+  height: 20px;
+}
+  
+
+  #home{
+  position: absolute;
+  left: 170px;
+  display: inline-block;
+  top: 75px;
+}
+
+#homeImg:hover,#homeImg:active {
+  content: url('./projectImage/header/home2.png');
+}
+
+#form a{
+  color: black;
+  font-size: 12px;
+  padding-right: 40px;
+
+}
+  
+#form a:hover,#form a:active{
+  color :#045FB4;
+  font-weight: bold;
+  display: inline-block;
+  text-decoration: none;
+}
+#form{
+   position: absolute;
+   left: 1000px;
+   top: 75px;
+   display: inline-block;
+}
+
+
+
+  /*  ---------------------------------------------------- */
+  /****************sidebar CSS****************/
+  #s-sidebar{
+      width:350px;
+      height:300px;
+      margin-bottom:20px;
+      float:left;
+      border:1px solid #bcbcbc;
+
+  }
+
+  #t-sidebar{
+    width: 320px;
+    height: 200px;
+    border:1px solid #d6d3d3;
+    margin:auto;
+    margin-top: 5px;
+    box-shadow: 0 4px 0.5px -3px gray;
+
+  }
+
+  #f-sidebar{
+    border:1px solid #d6d3d3;
+    border-top: none;
+    width: 320px;
+    height: 38px;
+    background-color: #3abc22;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 5px;
+    text-align: center;
+  }
+
+  #imgBox{ text-align: center;}
+
+  #imgBox img{
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  #m-sidebar{
+    box-shadow: 0 4px 0.5px -3px gray;
+    width: 320px;
+    height: 30px;
+    margin:auto;
+    margin-top: 40px;
+    background-color: #e2e2e2;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 5px;
+  }
+
+/*  ---------------------------------------------------- */
+
+
+/*index slider 부분 css*/
+
+#slider {
+  position:relative;
+  overflow: hidden;
+}
+
+#slider .slides {
+  margin:0;
+  padding: 0;
+}
+
+#slider .slide {
+  float: left;
+  list-style-type: none;
+}
+
+/* 하단 슬라이드 표시 */
+#slider-nav {
+position:absolute;
+height:2em;
+bottom:0em;
+width:100%;
+cursor:default;
+}
+
+
+
+/* 사이드바 하단 표시 설정 */
+.slider-nav-dot {
+list-style:none;
+border: 0.15em solid white;
+box-sizing:border-box;
+width:1em;
+height:1em;
+display:inline-block;
+border-radius:50%;
+vertical-align:middle;
+}
+
+/* 슬라이트 하단 표시 클릭시 색깔 */
+.slider-nav-dot:hover {
+background:white;
+}
+ 
+  /*  ---------------------------------------------------- */
+
+  /* index 슬라이드 바  */
+  #m-content{
+      width:800px;
+      height:300px;
+      padding:20px;
+      margin-bottom:20px;
+      float:right;
+      border:1px solid red;
+      text-align:center;
+      overflow: auto;
+  }
+  
+  #m-footer{
+      background-color: #ea314e;
+      height: 50px;
+      clear:both;
+      padding:5px;
+  }
+  
+ 
