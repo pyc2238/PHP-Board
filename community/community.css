@@ -1,0 +1,22 @@
+*{margin:0; padding: 0;}
+
+/****************index.php CSS****************/
+
+  #m-community-container{
+    background-color: #f4f4f4;
+  }
+
+  #s-community-container{
+    width:80%;
+    height: 900px;
+    margin: 0px auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 20px;
+    border : 1px solid #bcbcbc;
+    background-color: white;
+  }
+  
+
+  
+  

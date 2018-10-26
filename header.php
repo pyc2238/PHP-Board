@@ -24,16 +24,16 @@
                     <a class="nav-link text-uppercase" href="index.html">Penpal <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#expertise">Forum</a>
+                    <a class="nav-link text-uppercase" href="/TermProject/community/community.php">community</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#team">Club</a>
+                    <a class="nav-link text-uppercase" href="#team">Forum</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#works">ALBUM</a>
+                    <a class="nav-link text-uppercase" href="#works">Club</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#people-say">pepole say</a>
+                    <a class="nav-link text-uppercase" href="#people-say">ALBUM</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link  text-uppercase" href="#contact">contact</a>
@@ -44,32 +44,27 @@
         </nav>
     </header>
 
-    <?php if($uid) : //로그인 상태일 때 출력?> 
-      <div id="t-header">
-            <div id="home">
-               <a  href="/TermProject/index.php"><img id="homeImg" src="/TermProject/projectImage/header/home.png" alt="homeLogo" ondragstart="return false"></a>
-            </div>
-            <div id="form">
-                <a><i class="fa fa-user"><?= $unickname ?></i></a>
-                <a href="/TermProject/member/member_logout.php" class=""><i class="fa fa-sign-out">로그아웃</i></a>
-                <a href="/TermProject/member/member_user_check_form.php"><i class="fa fa-cogs">내정보</i></a>
-                <a href=""><i class="fa fa-envelope">쪽지</i></a>
-            </div>
-        </div> 
-     
-    <?php else : //로그인 되지 않은 상태일 때 출력?>
-      <div id="t-header">
-            <div id="home">
-               <a  href="/TermProject/index.php"><img id="homeImg" src="/TermProject/projectImage/header/home.png" alt="homeLogo" ondragstart="return false"></a>
-            </div>
-            <div id="form">
-                <a href="/TermProject/member/member_login_form.php"><i class="fa fa-check">로그인</i></a> <!--member_login_form 이동-->
-                <a href="/TermProject/member/member_join_form.php"><i class="fa fa-address-card">회원가입</i></a> <!--member_join_form 이동-->
-                <a href="/TermProject/member/member_find_id_pw_form.php"><i class="fa fa-question-circle">아이디/비밀번호 찾기</i></a>
-            </div>
-        </div>
-    <?php endif ?>
+    <div class="headcontainer">
+      <div class="home">
+        <a  href="/TermProject/index.php"><img id="homeImg" src="/TermProject/projectImage/header/home.png" alt="homeLogo" ondragstart="return false"></a>
+      </div>
+      <?php if($uid) : //로그인 상태일 때 출력?> 
+      <div class="userInfo">
+        <a><i class="fa fa-user"><?= $unickname ?></i></a>
+        <a href="/TermProject/member/member_logout.php" class=""><i class="fa fa-sign-out">로그아웃</i></a>
+        <a href="/TermProject/member/member_user_check_form.php"><i class="fa fa-cogs">내정보</i></a>
+        <a href=""><i class="fa fa-envelope">쪽지</i></a>
+      </div>
+      <?php else : //로그인 되지 않은 상태일 때 출력?>
+      <div class="userInfo">
+        <a href="/TermProject/member/member_login_form.php"><i class="fa fa-check">로그인</i></a> <!--member_login_form 이동-->
+        <a href="/TermProject/member/member_join_form.php"><i class="fa fa-address-card">회원가입</i></a> <!--member_join_form 이동-->
+        <a href="/TermProject/member/member_find_id_pw_form.php"><i class="fa fa-question-circle">아이디/비밀번호 찾기</i></a>
+      </div>
+      <?php endif ?>
 
+
+    </div>
     <!-- 자바스크립트 옵션 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>

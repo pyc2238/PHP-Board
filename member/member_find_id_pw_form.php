@@ -11,8 +11,11 @@
             function findCheckId(chkbox){
                 if ( chkbox.checked == true ){
                     var userid = document.getElementById("uid").readOnly = true;
+                    document.getElementById("uid").value = "";  
                 }else{
                     var userid = document.getElementById("uid").readOnly = false;
+                    
+                   
                 }
             }
 
@@ -27,6 +30,7 @@
             <hr>
             <br>
             <br> 
+            <br>
             <br>
         <div class="row">
             <div class="col-sm"></div><!--첫번 째 그리드 박스-->
@@ -60,8 +64,8 @@
             </div>  <!--end of containar-->
 
                 </div><!--end of member-s-container-->
-                <?php require("../footer.php") ?>      
+                <?php require("../footer.php") ?>        
         </div><!--end of member-m-container-->
-       
+        
     </body>
 </html>

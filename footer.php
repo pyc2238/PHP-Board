@@ -1,5 +1,5 @@
 <!--웹 사이트의 footer 부분-->
 
-<div id="m-footer">  
+<div class="col" id="m-footer">  
     <p>Footer</p>
 </div>

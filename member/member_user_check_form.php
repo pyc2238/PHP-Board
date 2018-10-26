@@ -26,6 +26,7 @@
             <br>
             <br> 
             <br>
+            <br>
         <div class="row">
             <div class="col-sm"></div><!--첫번 째 그리드 박스-->
             <div class="col-sm">
@@ -49,9 +50,9 @@
                 <div class="col-sm"></div> <!--세번째 그리드 박스-->
                 </div><!--end of row--> 
             </div>  <!--end of containar-->
-
+            
                 </div><!--end of member-s-container-->
-                <?php require("../footer.php") ?>      
+                <?php require("../footer.php") ?>         
         </div><!--end of member-m-container-->
        
     </body>

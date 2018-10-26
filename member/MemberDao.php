@@ -85,20 +85,56 @@
         }
 
 
+
+        public function updateMember($id,$selfContext,$email){
+            try{
+                $sql ="update members set selfContext=:selfContext,email=:email where id=:id ";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
+                $pstmt->bindValue(":selfContext",$selfContext,PDO::PARAM_STR);
+                $pstmt->bindValue(":email",$email,PDO::PARAM_STR);
+            
+                $pstmt->execute();
+                
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }     
+
+        }
+
+
         //아이디가 $id인 회원정보 업데이트
-        public function updateMember($id,$selfContext){
+        public function updateMemberselfContext($id,$selfContext){
             try{
                 $sql ="update members set selfContext=:selfContext where id=:id ";
                 $pstmt = $this->pdo->prepare($sql);
                 $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
                 $pstmt->bindValue(":selfContext",$selfContext,PDO::PARAM_STR);
-
+            
                 $pstmt->execute();
                 
             }catch(PDOException $e){
                 exit($e->getMessage());
             }     
         }
+
+
+        //아이디가 $email인 회원정보 업데이트
+        public function updateMemberEmail($id,$email){
+            try{
+                $sql ="update members set email=:email where id=:id ";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
+                $pstmt->bindValue(":email",$email,PDO::PARAM_STR);
+            
+                $pstmt->execute();
+                
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }     
+        }
+
+
 
           //$id를 가진 회원 정보 삭제
           public function deleteMember($id){

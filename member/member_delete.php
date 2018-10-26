@@ -11,7 +11,7 @@
      if($id){
         $dao = new MemberDao();
         $dao->deleteMember($id);
-        session_destroy();
+        session_destroy();  //세션 기록 삭제
         okGo("회원 탈퇴가 완료되었습니다.","../index.php");
        
      }

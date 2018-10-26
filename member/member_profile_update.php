@@ -7,13 +7,22 @@
     session_start_if_none();
     $id =  sessionVar("uid");//$id 변수에 사용자의 id저장 
     $selfContest = requestValue("selfContext");
-
-    if($selfContest){
-        $dao = new MemberDao();
-        $dao->updateMember($id,$selfContest);
+    $email = requestValue("email");
+    $dao = new MemberDao();
+    
+    if($id && $selfContest && $email){
+        $dao->updateMember($id,$selfContest,$email);
+        $_SESSION["uselfContest"] = $selfContest;
         okGo("회원 정보가 수정되었습니다.","../index.php");
+    }else if($selfContest){
+        $dao->updateMemberselfContext($id,$selfContest);
+        $_SESSION["uselfContest"] = $selfContest;
+        okGo("회원 정보가 수정되었습니다.","../index.php");
+    }else if($email){
+        $dao->updateMemberEmail($id,$email);
+        okGo("회원 정보가 수정되었습니다.","../index.php");    
     }else{
-        okGo("회원 정보가 수정되었습니다.","../index.php");
+        errorBack("회원 정보 수정을 할 수 없습니다.");
     }
 
 

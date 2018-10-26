@@ -39,6 +39,7 @@
                 <h3>NEITTER-회원가입</h3>
                 <hr>
             </div>
+            <br>
             
             <div class="row">
             <div class="col-sm"> </div><!--첫번째 그리드 박스-->

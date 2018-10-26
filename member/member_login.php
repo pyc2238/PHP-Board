@@ -18,9 +18,15 @@
                 session_start_if_none();
                 $_SESSION["uid"] = $id;
                 $_SESSION["unickname"] = $member["nickname"];
+                $_SESSION["upw"] = $member["pw"];
+                $_SESSION["ugender"] = $member["gender"];
+                $_SESSION["uage"] = $member["age"];
+                $_SESSION["uaddress"] = $member["address"];
+                $_SESSION["ucountry"] = $member["country"];
+                $_SESSION["uemail"] = $member["email"];
                 okGo("로그인 완료되었습니다.","../index.php");
               }else{
-                errorBack("회원정보가 존재하지 않습니다.");      
+                errorBack("아이디 또는 비밀번호를 다시 확인하세요.");      
               }
         }else{
             errorBack("아이디와 비밀번호에 공백을 포함할 수 없습니다.");

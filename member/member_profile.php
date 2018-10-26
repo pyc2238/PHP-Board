@@ -54,13 +54,13 @@
                 <i class="fa fa-exclamation-circle"><label for="inputNickname">닉네임</label></i>
                 <input style="color:blue;" type="text"  name="nickname" class="form-control" value="<?= $member["nickname"]?>" readonly>
                 <br>
-                <i class="fa fa-exclamation-circle"> <label for="inputEmail">이메일</label></i>
-                <input style="color:blue;" type="email"  name="email" class="form-control" value="<?= $member["email"]?>" readonly >
+                <label for="inputEmail">이메일</label>
+                <input style="color:blue;" type="email"  name="email" class="form-control" value="<?= $member["email"]?>" >
                 <br>
                 <br>
                 <div class="form-group">
                     <label for="comment">자기소개</label>
-                    <textarea class="form-control" rows="5" id="comment" name="selfContext"><?= $member["selfContext"]?></textarea>
+                    <textarea class="form-control" rows="5" id="comment" style="resize: none;" name="selfContext"><?= $member["selfContext"]?></textarea>
                 </div><!--end of form-group-->
             
                 <div id="joinBtnBox">

@@ -2,8 +2,10 @@
     //Term Project의 공통 모듈
 
     //회원관리와 로그인 모듈을 위한 상수
-    define("MAIN_PAGE","../index.php");
+    define("MAIN_PAGE","/TermProject/index.php");
     define("MEMBER_PATH","member");
+
+
 
     //게시판 모듈의 URL을 반환하는 함수
     function bdUrl($file,$num,$page){
