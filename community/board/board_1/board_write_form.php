@@ -13,7 +13,9 @@
     <title>User Check</title>
     <link rel="stylesheet" href="/TermProject/community/community.css"> <!--forum css-->
     <link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">   <!--fontAresome-->
-    <script type="text/javascript" src="/TermProject/community/naverSmartEdit/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script>
+    <script src="/Test/ckeditor/ckeditor.js"></script>
+
+    <!-- <script type="text/javascript" src="/TermProject/community/naverSmartEdit/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script> -->
    
    <style>
        form input{margin-right:20px;}
@@ -38,6 +40,11 @@
                     <td colspan="2">
                         <textarea name="content" id="content" class="nse_content" cols="147" rows="18"> </textarea>
                         <script type="text/javascript">
+           CKEDITOR.replace('content');
+            
+                    </script>
+<!--
+                        <script type="text/javascript">
                               var oEditors = [];
                                 nhn.husky.EZCreator.createInIFrame({
                                     oAppRef: oEditors,
@@ -54,6 +61,7 @@
                                     } catch(e) {}
                                 }
                         </script>
+              -->
                     </td>
                 </tr>
             </table>

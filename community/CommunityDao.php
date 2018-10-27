@@ -15,7 +15,7 @@
 
 
         //게시판 전체 글 수 (전체 레코드 수 )반환
-        //게시판의 전체글 수 ,즉 boardtest의 테이블의 젠체 레코드 수를 반환한다. 테이블에 들어있는 레코드의 개수를 알아내기 위해
+        //게시판의 전체글 수 ,즉 community의 테이블의 젠체 레코드 수를 반환한다. 테이블에 들어있는 레코드의 개수를 알아내기 위해
         //"select count(*) from boardtest"를 사용하였다. 이 쿼리를 사용하면 하나의 값(테이블의 전체레코드 개수)만 반환되므로,
         //fetchColumn()메서드로 그 값을 읽어 레코드의 수를 구한다.
         public function getNumMsgs(){
@@ -81,15 +81,17 @@
         //새 글을 저장 하기 위해,주어진 데이터로 insert 쿼리를 실행한다.
         public function insertMsg($countryImg,$title,$unickname,$content){
             try{
-                $sql = "insert into community (country,title,writer,content,regtime,hits,commend) values(:country,:title,:writer,:content,:regtime,0,0)";
+                $sql = "insert into community (country,title,writer,content,regtime,regtimeFul,hits,commend) values(:country,:title,:writer,:content,:regtime,:regtimeFul,0,0)";
                 $pstmt = $this->pdo->prepare($sql);
                 
                 $regtime = date("m-d");
+                $regtimeFul = date("Y-m-d H:i:s");
                 $pstmt->bindValue(":country",$countryImg,PDO::PARAM_STR);
                 $pstmt->bindValue(":writer",$unickname,PDO::PARAM_STR);
                 $pstmt->bindValue(":title",$title,PDO::PARAM_STR);
                 $pstmt->bindValue(":content",$content,PDO::PARAM_STR);
                 $pstmt->bindValue(":regtime",$regtime,PDO::PARAM_STR);
+                $pstmt->bindValue(":regtimeFul",$regtimeFul,PDO::PARAM_STR);
                 $pstmt->execute();
             }catch(PDOException $e){
                 exit($e->getMessage());

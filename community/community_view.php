@@ -5,34 +5,21 @@
     $dao = new CommunityDao();
     session_start_if_none();
     $uid = sessionVar("uid");
-
-
-    define("NUM_LINES",10);  //게시글 리스트의 줄 수
-    define("NUM_PAGE_LINKS",2); //화면에 표시될 페이지 링크의 수
-
-
-    $page = requestValue("page"); // 현재 페이지
+    $num = requestValue("num");
+    $page = requestValue("page"); 
     
-    if($page < 1){  //현재 페이지의 보정
-        $page = 1;
-    }
 
-    // $numPageLinks = 10; //한페이지에 출력할 페이지 링크의 수
-      // $numMsgs = 10 ; //한 페이지에 출력할 게시글 수 
-    $startPage = floor(($page-1)/NUM_PAGE_LINKS)*NUM_PAGE_LINKS+1;
-    $endPage = $startPage + (NUM_PAGE_LINKS-1);
-  
-    $startRecord = ($page - 1) * NUM_LINES;    //page는 배역과 같이 0번부터 출력해야한다. 0~9 // 10~19 
-    $msgs = $dao->getManyMsgs($startRecord,NUM_LINES); 
-    // $count = $dao->getNumManyMsgs();    //전체 레코드의 개수
-    // $totalPages = ceil($count/$NUM_LINES);    //전체 페이지수 
-    
-    // if($endPage > $totalPages){
-        // $endPage = $totalPages;
-    // }
-?>
+    $result = $dao->getMsg($num);
+
+    ?>
+
+<style>
+.col{
+    border:1px solid red;
+}
 
 
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,10 +33,6 @@
     <?php
         require("C:/xampp/htdocs/TermProject/html_head.php");
     ?>
-
-
-
-
 </head>
 
 
@@ -59,9 +42,25 @@
         <div id="s-community-container">
         <h3>지식교류</h3>
         <hr>
-
-  
-    	
+        <div class="col">
+            <table class = "table" border="2">
+                <thead>
+                    <tr>
+                        <th>글쓴이</th>
+                        <th><?=$result["writer"] ?></th>
+                        <th>작성일</th>
+                        <th><?=$result["regtimeFul"] ?></th>
+                        <th>조회</th>
+                        <th><?=$result["hits"] ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="6"><?=$result["content"] ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!--end of col-->
     
     </div><!--"s-community-container-->
            

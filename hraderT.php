@@ -1,7 +1,10 @@
  <!--웹 사이트의 공통 header 부분-->
+ <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
  
  <?php
-  require("C:/xampp/htdocs/TermProject/html_head.php");
+  // require("C:/xampp/htdocs/TermProject/html_head.php");
   require_once("tools.php");
 
   //사용자의 아이디와 이름을 담은 세션 변수 읽기
@@ -14,21 +17,48 @@
 <link rel="stylesheet" media="(max-width: 800px)" href="example.css" />
 
 <!-- 스타일 이벤트 내의 CSS 미디어 쿼리 -->
-<style>
-@media (max-width: 600px) {
-  #userInfo a {
-    padding-left:40px;
-    color:red;    
-}
-  }
-  </style>
+<script>
+var  mn = $(".main-nav");
+    mns = "main-nav-scrolled";
+    hdr = $('header').height();
 
+$(window).scroll(function() {
+  if( $(this).scrollTop() > hdr ) {
+    mn.addClass(mns);
+  } else {
+    mn.removeClass(mns);
+  }
+});
+
+</script>
+<style>
+header .main-nav{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 4000;
+}
+
+
+/*for test*/
+body{
+  height: 900px;
+}
+
+</style>
  <link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">
 
+<!------ Include the above in your HEAD tag ---------->
       <header>
        <nav class="navbar navbar-expand-lg navbar-light bg-danger text-light py-3 main-nav">
           <div class="container">
             <a class="navbar-brand" href="/TermProject/index.php"><img src="/TermProject/projectImage/header/TESTLOGO.png" alt="Logo" ondragstart="return false"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+           
+           
               <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
@@ -66,15 +96,6 @@
         </div>
         </div>
 
-
-
-        <div class="col-xl-8 col-md-12 test-center" id="userInfo">
-            <a href=""><i class="fa fa-envelope">쪽지</i></a>
-            <a href="/TermProject/member/member_user_check_form.php"><i class="fa fa-cogs">내정보</i></a>
-            <a href="/TermProject/member/member_logout.php" class=""><i class="fa fa-sign-out">로그아웃</i></a>
-            <a><i class="fa fa-user"><?= $unickname ?></i></a>
-        </div>
-    </div>
 
 
     <!-- 자바스크립트 옵션 -->

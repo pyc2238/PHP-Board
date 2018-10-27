@@ -84,13 +84,13 @@
     }
    
 /* 버튼 박스 스타일 */
-#joinBtnBox {
-	display:inline-block;
+/* #joinBtnBox { */
+	/* display:inline-block; */
 	/* padding-left:140px; */
 	
-}
+/* } */
 
-#loginBtnBox{	padding-left:15px;}
+#loginBtnBox{padding-left:15px;}
 
 /* 아이디 및 닉네임 중복체크 */
 #checkId{

@@ -285,3 +285,53 @@ small{
 }
 
 
+
+/* pagination */
+.pagination {
+    display: inline-block;
+    
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 12px;
+    text-decoration: none;
+    /* transition: background-color .3s; */
+    border: 1px solid #e2e2e2;
+    margin: 0 2px 2px 0px;
+}
+.pagination a:hover{
+    background-color: #dd0000;
+    color: white;
+    border: 1px solid #e2e2e2;
+    text-decoration: none;
+}
+
+.pagination #choice{
+    background-color: #dd0000;
+    color: white;
+    border: 1px solid #e2e2e2;
+    text-decoration: none;
+}
+
+.button {
+
+    width:50px;
+    
+    background-color: #f8585b;
+    
+    border: none;
+    
+    color:#fff;
+        
+    text-align: center;
+    
+    text-decoration: none;
+    
+    display: inline-block;
+    
+    cursor: pointer;
+    
+    }
+    

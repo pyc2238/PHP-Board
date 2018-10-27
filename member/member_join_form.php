@@ -93,7 +93,7 @@
 
                 <br>
                 
-                <div id="joinBtnBox">
+                <div class="col">
                     <button class="btn btn-outline-warning " type="submit"><i class="fa fa-pencil">가입</i></button>
                     <button class="btn btn-outline-warning " type="reset"><i class="fa fa-eraser">다시쓰기</i></button>
                 </div>

@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="./community.css"> <!--forum css-->
 <link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">   <!--fontAresome-->
 <script type="text/javascript" src="/TermProject/community/naverSmartEdit/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script src="ckeditor/ckeditor.js"></script>
    
     <title>update_form</title>
 
@@ -35,6 +36,17 @@
 <style>
     form input{margin-right:20px;}
 </style>
+
+
+<script>
+     function choice (num,page){
+        var choice = confirm("해당 게시글을 삭제하시겠습니까?");
+        if(choice){
+            location.href ="community_delete.php?num="+num+"&page="+page;
+        }
+    }
+</script>
+
 
 <body>
     <div id="m-community-container">     
@@ -53,29 +65,16 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea name="content" id="content" class="nse_content" cols="147" rows="20"><?= $member["content"] ?> </textarea>
+                        <textarea name="content" id="content"><?= $member["content"] ?></textarea>
                         <script type="text/javascript">
-                              var oEditors = [];
-                                nhn.husky.EZCreator.createInIFrame({
-                                    oAppRef: oEditors,
-                                    elPlaceHolder: "content",   // 에디터 홀더 . textarea의 아이디
-                                    sSkinURI: "./nse_files/SmartEditor2Skin.html",
-                                    fCreator: "createSEditor2"
-                                });
-                                function submitContents(elClickedObj) {
-                                    // 에디터의 내용이 textarea에 적용됩니다.
-                                    oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);
-                                    // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
-                                    try {
-                                        elClickedObj.form.submit();
-                                    } catch(e) {}
-                                }
+                             CKEDITOR.replace('content');
                         </script>
                     </td>
                 </tr>
             </table>
             <br>
             <hr>
+                <input class="btn btn-outline-danger float-right" type="button" value="삭제" onclick="choice(<?= $num ?>,<?= $page ?>);">
                 <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('community.php',0,$page) ?>'">
                 <input class="btn btn-outline-primary float-right" type="submit" value="수정" onclick="submitContents(this)" />             
         </form>
