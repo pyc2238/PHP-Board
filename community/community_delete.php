@@ -17,5 +17,5 @@
 
     $dao->deleteMsg($num);
     
-    okGo("게시물 삭제 완료되었습니다.",bdUrl("community.php",0,$page));
+    okGo("게시물 삭제 완료되었습니다.",bdUrl("community.php",0,$page,0,0));
 ?>

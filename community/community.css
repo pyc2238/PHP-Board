@@ -16,7 +16,17 @@
     border : 1px solid #bcbcbc;
     background-color: white;
   }
+
+
+  #s-community-container_view{
+    width:80%;
+    height: 520px;
+    margin: 0px auto;
+    margin-top: 5px;
+    padding: 20px;
+    border : 1px solid #bcbcbc;
+    background-color: white;
+  }
   
 
-  
   

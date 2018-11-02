@@ -7,6 +7,7 @@
 /****************index.php CSS****************/
 
   #m-container{
+    width:100%;
     background-color: #f4f4f4;
   }
 
@@ -67,10 +68,6 @@
  header .main-nav-scrolled{background-color: rgba(0,0,0,0.4);}
   .navbar-light .navbar-nav .nav-link{color: #fff;}
   .navbar-light .navbar-nav .active .nav-link{color: #00e0d0;}
-
-nav{
-  height:55px;
-}
 
 
   /*  ---------------------------------------------------- */

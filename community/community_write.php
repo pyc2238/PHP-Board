@@ -15,13 +15,13 @@
         $countryImg = "/TermProject/projectImage/board/japan.png";
      }
      
-     $title = str_replace("  ","&nbsp;&nbsp;",$title);
-     $title = str_replace("<", "&lt", $title);
-     $title = str_replace(">", "&gt", $title);
+    //  $title = str_replace("  ","&nbsp;&nbsp;",$title);
+    //  $title = str_replace("<", "&lt", $title);
+    //  $title = str_replace(">", "&gt", $title);
 
-     $content = str_replace("  ","&nbsp;&nbsp;",$content);
-     $content = str_replace("<", "&lt", $content);
-     $content = str_replace(">", "&gt", $content);
+    //  $content = str_replace("  ","&nbsp;&nbsp;",$content);
+    //  $content = str_replace("<", "&lt", $content);
+    //  $content = str_replace(">", "&gt", $content);
 
 
 

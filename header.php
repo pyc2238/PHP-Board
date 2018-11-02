@@ -32,7 +32,7 @@ $(window).scroll(function() {
       <header>
        <nav class="navbar navbar-expand-lg navbar-light bg-danger text-light py-3 main-nav">
           <div class="container">
-            <a class="navbar-brand" href="/TermProject/index.php"><img src="/TermProject/projectImage/header/TESTLOGO.png" alt="Logo" ondragstart="return false"></a>
+            <a class="navbar-brand" href="/TermProject/index.php"><img src="/TermProject/projectImage/header/NEITTER.png" alt="Logo" ondragstart="return false"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
               </button>

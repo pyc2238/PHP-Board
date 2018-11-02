@@ -186,12 +186,13 @@ small{
 .table thead tr{
     transition: all 1s;
 }
+/*
 .table thead tr:hover{
     
     background-color: #f0ad4e;
     transition: 0.5s;
 }
-
+*/
 .table thead tr th {
     font-size: 17px ;
     font-weight: 300;

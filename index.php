@@ -15,10 +15,10 @@
     ?>
 </head>
 <body>
-    <div id="m-container">     
+    <div  id="m-container">     
         <?php require("C:/xampp/htdocs/TermProject/header.php") ?> 
             <div id="s-container">
-                 <?php require("sidebar.php") ?>
+                  <?php require("sidebar.php") ?>
                 <div id="m-content">
                     <div id="slider">
                         <ul class="slides">

@@ -128,12 +128,16 @@
             }
         }
 
+
+
+    
+
         //$num번 게시글 조회수 1증가
         //게시글 조회수를 1증가시키기 휘해 hits 필드에 대해 update 쿼리를 실행한다.
         public function increaseHits($num){
             try{
                 
-                $sql ="update boardtest set hits=hits+1 where num = :num";
+                $sql ="update community set hits=hits+1 where num = :num";
                 $pstmt = $this->pdo->prepare($sql);
                 $pstmt->bindValue(":num",$num,PDO::PARAM_INT);
                 
@@ -141,6 +145,109 @@
             }catch(PDOException $e){
                 exit($e->getMessage());
             }
+        }
+
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //게시판 검색기능 DAO
+
+
+        //게시판 제목으로 검색
+        public function searchTitleMsg($search,$start,$rows){
+            try{
+                $sql ="select * from community where title LIKE '%$search%' order by num desc limit :start, :rows;";
+                $pstmt = $this->pdo->prepare($sql);
+                
+                $pstmt->bindValue(":start",$start,PDO::PARAM_INT);
+                $pstmt->bindValue(":rows",$rows,PDO::PARAM_INT);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetchAll(PDO::FETCH_ASSOC); //레코드를 연관배열로 담아 반환한다.
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+        public function getSearchTitleMsgs($search){
+            try{
+                $sql = "select count(*) from  community where title LIKE '%$search%';";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->execute();
+                
+                $numMsgs = $pstmt->fetchColumn();   // 결과 세트의 다음 행에 있는 단일 컬럼을 리턴합니다.
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $numMsgs;
+        }
+
+
+
+        //게시판 글쓴이로 검색
+        public function searchWriterMsg($search,$start,$rows){
+            try{
+                $sql ="select * from community where writer LIKE '%$search%' order by num desc limit :start, :rows;";
+                $pstmt = $this->pdo->prepare($sql);
+                
+                $pstmt->bindValue(":start",$start,PDO::PARAM_INT);
+                $pstmt->bindValue(":rows",$rows,PDO::PARAM_INT);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetchAll(PDO::FETCH_ASSOC); //레코드를 연관배열로 담아 반환한다.
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+        public function getSearchWriterMsgs($search){
+            try{
+                $sql = "select count(*) from  community where writer LIKE '%$search%';";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->execute();
+                
+                $numMsgs = $pstmt->fetchColumn();   // 결과 세트의 다음 행에 있는 단일 컬럼을 리턴합니다.
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $numMsgs;
+        }
+
+        //게시판 글쓴이로 검색
+        public function searchContentMsg($search,$start,$rows){
+            try{
+                $sql ="select * from community where content LIKE '%$search%' order by num desc limit :start, :rows;";
+                $pstmt = $this->pdo->prepare($sql);
+                
+                $pstmt->bindValue(":start",$start,PDO::PARAM_INT);
+                $pstmt->bindValue(":rows",$rows,PDO::PARAM_INT);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetchAll(PDO::FETCH_ASSOC); //레코드를 연관배열로 담아 반환한다.
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+        //게시판 내용으로 검색
+        public function getSearchContentMsgs($search){
+            try{
+                $sql = "select count(*) from  community where content LIKE '%$search%';";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->execute();
+                
+                $numMsgs = $pstmt->fetchColumn();   // 결과 세트의 다음 행에 있는 단일 컬럼을 리턴합니다.
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $numMsgs;
         }
 
 

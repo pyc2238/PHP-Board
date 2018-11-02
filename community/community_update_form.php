@@ -22,7 +22,7 @@
    
 <link rel="stylesheet" href="./community.css"> <!--forum css-->
 <link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">   <!--fontAresome-->
-<script type="text/javascript" src="/TermProject/community/naverSmartEdit/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script>
+<!-- <script type="text/javascript" src="/TermProject/community/naverSmartEdit/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script> -->
 <script src="ckeditor/ckeditor.js"></script>
    
     <title>update_form</title>
@@ -57,7 +57,7 @@
    <div class="container">
 
     <h2>NEITTER-글 수정</h2><hr>
-            <form action="<?= bdUrl("community_update.php",$num,$page)?>" method="post" >
+            <form action="<?= bdUrl("community_update.php",$num,$page,0,0)?>" method="post" >
             <table border="2" class="table">
                 <tr>
                     <td style="text-align:center;"><b>Title</b></td>
@@ -75,7 +75,7 @@
             <br>
             <hr>
                 <input class="btn btn-outline-danger float-right" type="button" value="삭제" onclick="choice(<?= $num ?>,<?= $page ?>);">
-                <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('community.php',0,$page) ?>'">
+                <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('community.php',0,$page,0,0) ?>'">
                 <input class="btn btn-outline-primary float-right" type="submit" value="수정" onclick="submitContents(this)" />             
         </form>
         </div><!--contanier-->

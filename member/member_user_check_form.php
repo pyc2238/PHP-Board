@@ -32,7 +32,7 @@
             <div class="col-sm">
             
             <form action="member_user_check.php" method="post">
-                <b>회원아이디</b> <b style="color:blue;"><?= $uid ?></b>
+                <b>회원아이디</b><b style="color:blue;"><?= $uid ?></b>
                 <br>
                 <br>
                 <br>

@@ -8,7 +8,7 @@
 
 
     //게시판 모듈의 URL을 반환하는 함수
-    function bdUrl($file,$num,$page){
+    function bdUrl($file, $num, $page, $searchChoice, $search){
         $join = "?";
         
         if($num){
@@ -17,7 +17,13 @@
         }
 
         if($page){
-            $file .=$join. "page=$page";
+            $file .= $join . "page=$page";
+        }
+        if($searchChoice) {
+            $file .= '&' . "searchChoice=$searchChoice";
+        }
+        if($search) {
+            $file .= '&' . "search=$search";
         }
         return $file;
     }

@@ -48,7 +48,11 @@
                     <td colspan="2">
                         <textarea name="content" id="content"></textarea>
                         <script type="text/javascript">
-                             CKEDITOR.replace('content');
+                              CKEDITOR.replace('content',{
+                                 'filebrowserUploadUrl':'/TermProject/community/upload.php'
+
+                                 });
+
                         </script>
                       
                     </td>
@@ -56,7 +60,7 @@
             </table>
             <br>
             <hr>
-                <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('./community.php',0,$page) ?>'">
+                <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('./community.php',0,$page,0,0) ?>'">
                 <input class="btn btn-outline-primary float-right" type="submit" value="글쓰기" onclick="submitContents(this)" />             
         </form>
         </div><!--contanier-->

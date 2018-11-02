@@ -4,7 +4,42 @@
 <html lang="en">   
     <title>Login Page</title>
     <link rel="stylesheet" href="./member.css">
+    <style>
+        .Social {
+            padding: 20px;
+            font-size: 30px;
+            width: 65px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
 
+        .Social:hover {
+            opacity: 0.7;
+            text-decoration:none;
+        }
+
+        .fa-facebook {
+        background: #3B5998;
+        color: white;
+        }
+
+        .fa-twitter {
+        background: #55ACEE;
+        color: white;
+        }
+
+        .fa-google {
+        background: #dd4b39;
+        color: white;
+        }
+
+        .fa-yahoo {
+        background: #430297;
+        color: white;
+        }
+    
+    </style>
     <script>
                 function show_Banner(num){
                     for(i=0;i<15;i++){
@@ -28,7 +63,6 @@
         <h3>NEITTER-로그인</h3>
         <hr>
         <br>
-        <br> 
         <br>
     <div class="row">
         <div class="col-sm"></div><!--첫번 째 그리드 박스-->
@@ -79,6 +113,21 @@
             <div class="col-sm"></div> <!--세번째 그리드 박스-->
             </div><!--end of row--> 
         </div> <!--end of containar-->
+    <br>
+
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm text-center">                
+                <!-- Add font awesome icons -->
+                <a href="#"  class="fa fa-facebook Social"></a>
+                <a href="#"  class="fa fa-twitter Social"></a>
+                <a href="#"  class="fa fa-google Social"></a>
+                <a href="#"  class="fa fa-yahoo Social"></a>
+            </div>
+            <div class="col-sm"></div>
+        </div>
+
+
 
             </div><!--end of member-s-container-->
             <?php require("../footer.php") ?> 

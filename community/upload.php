@@ -1,6 +1,6 @@
 <?php
 
-if ($_FILES["upload"]["size"] > 0 ){
+if ($_FILES["upload"]["size"] > 0  ){
 
 
     //오리지널 파일 이름.확장자

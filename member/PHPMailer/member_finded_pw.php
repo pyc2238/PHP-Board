@@ -56,11 +56,9 @@
     <link rel="stylesheet" href="../member.css"> <!--member css-->
     <link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">   <!--fontAresome-->
     <body>     
-      
         <div id="member-m-container">
                 <?php require("C:/xampp/htdocs/TermProject/header.php") ?>
-            <div id="member-finded-container">
-                
+            <div id="member-finded-container"> 
         <div class="container">
             <h3>NEITTER-회원 비밀번호 찾기 결과</h3>
             <hr>
@@ -79,15 +77,12 @@
             <br>
                 <div id="profileCheckBox">
                     <button class="btn btn-outline-warning" type="button" onclick="location.href='/TermProject/index.php'">&nbsp;&nbsp;&nbsp;&nbsp;홈으로&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                </div> 
-        
+                </div>    
               </div> <!--그리드 박스-->                
                 </div><!--end of row--> 
             </div>  <!--end of containar-->
-
                 </div><!--end of member-s-container-->
                 <?php require("C:/xampp/htdocs/TermProject/footer.php") ?>      
         </div><!--end of member-m-container-->
-       
     </body>
 </html>
