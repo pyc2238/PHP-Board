@@ -96,6 +96,23 @@
             location.href ="community_delete.php?num="+num+"&page="+page;
         }
     }
+
+
+        function enterkey() {
+        if (window.event.keyCode == 13) {
+ 
+            var searchValue = document.getElementById('inputState').value;
+            var search = document.getElementById('inputText').value;
+            
+            var url = '/TermProject/community/community.php?search=' + search +'&searchChoice=' + searchValue;
+
+            location.href = url;
+        }
+    }
+ 
+
+
+
 </script>
 
 <body>
@@ -185,7 +202,7 @@
                             <option value="writer">글쓴이</option>
                             <option value="content">내용</option>
                         </select>
-                        <input id="inputText" type="text" class="form-control" name="search" autocomplete=off>
+                        <input id="inputText" type="text" class="form-control" name="search" autocomplete=off onkeyup="enterkey();">
                         <button class="button" onclick="searchBtn()">검색</button>
                     </div>
                 </div><!-- end of col-sm -->

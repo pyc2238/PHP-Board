@@ -251,5 +251,100 @@
         }
 
 
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //게시판 검색기능 DAO
+
+        //댓글에 대한 데이터를 저장
+        public function insertComment($boardNum,$writer,$comment,$country){
+            try{
+                $sql = "insert into community_comment (boardNum,writer,comment,comment_time,country) values(:boardNum,:writer,:comment,:comment_time,:country)";
+                $pstmt = $this->pdo->prepare($sql);
+            
+                $regtimeFul = date("Y-m-d H:i:s");
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                $pstmt->bindValue(":writer",$writer,PDO::PARAM_STR);
+                $pstmt->bindValue(":comment",$comment,PDO::PARAM_STR);
+                $pstmt->bindValue(":comment_time",$regtimeFul,PDO::PARAM_STR);
+                $pstmt->bindValue(":country",$country,PDO::PARAM_STR);
+                
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+
+
+          //$num번 댓글을 반환
+        //지정된 번호의 게시글 데이터를 하나의 연관 배열로 만들어 반환한다. 연관 배열의 인덱스는 필드명이다.
+        public function getCommentMsg($boardNum){
+            try{
+                $sql = "select * from community_comment where boardNum = :boardNum";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetchAll(PDO::FETCH_ASSOC); //레코드를 연관배열로 담아 반환한다.
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+        //수정 작업
+        public function getCommentId($id){
+            try{
+                $sql = "select * from community_comment where id = :id";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":id",$id,PDO::PARAM_INT);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetch(PDO::FETCH_ASSOC); //레코드를 연관배열로 담아 반환한다.
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+        public function updateComment($id,$comment){
+            try{
+                $sql = "update community_comment set comment=:comment where id = :id";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":id",$id,PDO::PARAM_INT);
+                $pstmt->bindValue(":comment",$comment,PDO::PARAM_STR);
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+
+
+        
+      
+        
+        //$boardId번 댓글 삭제
+        public function deleteComennt($commentNum){
+            try{
+                $sql = "delete from community_comment where id=:id ";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":id",$commentNum,PDO::PARAM_INT);
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+
+
+
+
+
+
+
     }
 ?>

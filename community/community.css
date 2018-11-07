@@ -19,7 +19,7 @@
 
 
   #s-community-container_view{
-    width:80%;
+    width:75%;
     height: 520px;
     margin: 0px auto;
     margin-top: 5px;
@@ -27,6 +27,32 @@
     border : 1px solid #bcbcbc;
     background-color: white;
   }
-  
 
+  div>#comments{
+    margin-top:5px;
+    background-color: white;
+    border : 1px solid #bcbcbc;
+  }
   
+  div>#commentText{
+    margin-top:5px;
+  }
+
+  div>#commentWrite{
+    height:80px;
+    font-weight: bold;
+  
+  }
+  
+  div>.commentBoxfirst{
+    background-color:#fcf7f5;
+    border-top : 1px solid #bbbbbb;
+    border-left : 1px solid #bbbbbb;
+    border-right : 1px solid #bbbbbb;
+    box-shadow: 0 4px 0.5px -3px gray;
+  }
+  div>.commentBoxsecound{
+    background-color: white;
+    border : 1px solid #bcbcbc;
+   
+  }
