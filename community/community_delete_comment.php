@@ -5,9 +5,10 @@
     $dao = new CommunityDao();
     $commentNum = requestValue('id');
     $boardNum = sessionVar('boardNum');
-    
+    $page = requestValue('page');
+
     $dao->deleteComennt($commentNum);
 
-    goNow(bdUrl('community_view.php',$boardNum,0,0,0));
+    goNow(bdUrl('community_view.php',$boardNum,$page,0,0));
 
 ?>

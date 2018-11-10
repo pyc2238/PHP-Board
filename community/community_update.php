@@ -5,7 +5,8 @@
     //전달된 값 저장
     $num = requestValue("num");
     $page = requestValue("page");
-    
+    $search = requestValue("search");
+    $searchChoice = requestValue("searchChoice");
     
     $title = requestValue("title");
     $content = requestValue("content");
@@ -23,7 +24,7 @@
         $dao = new CommunityDao();
         $dao-> updateMsg($num,$title,$content);
         //글 목록 페이지로 복귀
-        okGo("게시물 수정이 완료되었습니다.",bdUrl("community.php",0,$page,0,0));
+        okGo("게시물 수정이 완료되었습니다.",bdUrl("community_view.php",$num,$page,$searchChoice,$search));
     }else{
         errorBack("모든 항목이 빈칸 없이 입력되어야 합니다.");
     }

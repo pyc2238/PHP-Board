@@ -6,7 +6,7 @@
     $writer = sessionVar('unickname');
     $country = sessionVar("ucountry");
     $comment = requestValue('comment');
-   
+    $page = requestValue('page');
    
 
     $comment = str_replace("  ","&nbsp;&nbsp;",$comment);
@@ -20,9 +20,11 @@
         $countryImg = "/TermProject/projectImage/board/japan2.png";
      }
 
-     
+
     $dao = new CommunityDao();
 
     $dao->insertComment($boardNum,$writer,$comment,$countryImg);
-    goNow(bdUrl('community_view.php',$boardNum,0,0,0));
+    goNow(bdUrl('community_view.php',$boardNum,$page,0,0));
+  
+    
 ?>

@@ -6,6 +6,8 @@
     $unickname = sessionVar("unickname");
     $num = requestValue("num");
     $page = requestValue("page");
+    $search = requestValue("search");
+    $searchChoice = requestValue("searchChoice");
     $dao = new CommunityDao();
     $member = $dao->getMsg($num);
 
@@ -18,13 +20,16 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   
-<link rel="stylesheet" href="./community.css"> <!--forum css-->
-<link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">   <!--fontAresome-->
-<!-- <script type="text/javascript" src="/TermProject/community/naverSmartEdit/nse_files/js/HuskyEZCreator.js" charset="utf-8"></script> -->
-<script src="ckeditor/ckeditor.js"></script>
-   
+
+    <link rel="stylesheet" href="./community.css">
+    <!--forum css-->
+    <link rel="stylesheet" href="/TermProject/icon/css/font-awesome.min.css">
+    <!--fontAresome-->
+    
+    <script src="/TermProject/ckeditor/ckeditor.js"></script>
+
     <title>update_form</title>
 
     <?php
@@ -39,7 +44,7 @@
 
 
 <script>
-     function choice (num,page){
+    function choice (num,page){
         var choice = confirm("해당 게시글을 삭제하시겠습니까?");
         if(choice){
             location.href ="community_delete.php?num="+num+"&page="+page;
@@ -49,40 +54,45 @@
 
 
 <body>
-    <div id="m-community-container">     
-        <?php require("C:/xampp/htdocs/TermProject/header.php") ?> 
+    <div id="m-community-container">
+        <?php require("C:/xampp/htdocs/TermProject/header.php") ?>
         <div id="s-community-container">
-        
-    
-   <div class="container">
 
-    <h2>NEITTER-글 수정</h2><hr>
-            <form action="<?= bdUrl("community_update.php",$num,$page,0,0)?>" method="post" >
-            <table border="2" class="table">
-                <tr>
-                    <td style="text-align:center;"><b>Title</b></td>
-                    <td><input type="text" class="form-control"  name="title" autocomplete=off value="<?= $member["title"] ?>"></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <textarea name="content" id="content"><?= $member["content"] ?></textarea>
-                        <script type="text/javascript">
-                             CKEDITOR.replace('content');
-                        </script>
-                    </td>
-                </tr>
-            </table>
-            <br>
-            <hr>
-                <input class="btn btn-outline-danger float-right" type="button" value="삭제" onclick="choice(<?= $num ?>,<?= $page ?>);">
-                <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('community.php',0,$page,0,0) ?>'">
-                <input class="btn btn-outline-primary float-right" type="submit" value="수정" onclick="submitContents(this)" />             
-        </form>
-        </div><!--contanier-->
+
+            <div class="container">
+
+                <h2>NEITTER-글 수정</h2>
+                <hr>
+                <form action="<?= bdUrl("community_update.php",$num,$page,$searchChoice,$search)?>" method="post" >
+                    <table border="2" class="table">
+                        <tr>
+                            <td style="text-align:center;"><b>Title</b></td>
+                            <td><input type="text" class="form-control" name="title" autocomplete=off value="<?= $member["title"] ?>"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <textarea name="content" id="content"><?= $member["content"] ?></textarea>
+                                <script type="text/javascript">
+                                    CKEDITOR.replace('content');
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <input class="btn btn-outline-danger float-right" type="button" value="삭제" onclick="choice(<?= $num ?>,<?= $page ?>);">
+                    <input class="btn btn-outline-warning float-right" type="button" value="목록" onclick="location.href='<?= bdUrl('community.php',0,$page,$searchChoice,$search) ?>'">
+                    <input class="btn btn-outline-primary float-right" type="submit" value="수정" onclick="submitContents(this)" />
+                    <br>
+
+                </form>
+            </div>
+            <!--contanier-->
 
         </div>
-            <?php require("C:/xampp/htdocs/TermProject/footer.php") ?>  
-        </div><!--m-community-container-->
-                 
+        <?php require("C:/xampp/htdocs/TermProject/footer.php") ?>
+    </div>
+    <!--m-community-container-->
+
 </body>
+
 </html>

@@ -109,4 +109,38 @@
 <?php
         exit();
     }
+
+
+    function translation($papago) {
+          // 네이버 Papago SMT 기계번역 Open API 
+          $client_id = "XhF4hpyBJquD0uxxiIT9"; // 네이버 개발자센터에서 발급받은 CLIENT ID
+          $client_secret = "v15ft5DNeN";// 네이버 개발자센터에서 발급받은 CLIENT SECRET
+          $encText = urlencode($papago);
+          $postvars = "source=ko&target=ja&text=".$encText;
+          $url = "https://openapi.naver.com/v1/language/translate";
+          $is_post = true;
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, $url);
+          curl_setopt($ch, CURLOPT_POST, $is_post);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch,CURLOPT_POSTFIELDS, $postvars);
+          $headers = array();
+          $headers[] = "X-Naver-Client-Id: ".$client_id;
+          $headers[] = "X-Naver-Client-Secret: ".$client_secret;
+          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+          $response = curl_exec ($ch);
+          $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+          //   echo "status_code:".$status_code."<br>";
+          curl_close ($ch);
+          
+          if($status_code == 200) {  
+              $json = json_decode($response, true);
+              $translation = $json['message']['result']['translatedText']; 
+    
+        } else {
+            $translation = '점검 중';
+            //   echo "Error 내용:".$response;
+          }
+          return  $translation;
+    }
 ?>

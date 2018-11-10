@@ -4,7 +4,11 @@
      require_once('PHPMailer-master/PHPMailerAutoload.php');
      $id = requestValue("id");
      $dao = new MemberDao();  
-     $pw = "@zxc123456";
+     $pw = '@zxc123456';
+    //  $pw = array("@zxc123456", "!zxc123456", "#zxc123456", "&zxc123456");
+    //  $selected = array_rand($pw);
+    //  session_start_if_none();
+    //  $_SESSION['pw'] = $pw[$selected];
      $member = $dao->getMember($id);
      
      //회원 비밀번호 변경
@@ -17,11 +21,11 @@
      
        $mail->CharSet ="EUC_KR"; //한글 인코딩
        $mail->Encoding ="base64";  //한글 인코딩
-       $mail->Host       = "smtp.naver.com"; // SMTP server
-       // $mail->SMTPDebug  = 2;                     // SMTP 디버그 정보 사용
-       $mail->SMTPAuth   = true;                  // SMTP 인증 사용
-       $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier
-       $mail->Host       = "smtp.naver.com"; // 네이버 smtp서버 주소
+       $mail->Host = "smtp.naver.com"; // SMTP server
+    //    $mail->SMTPDebug  = 2;    // SMTP 디버그 정보 사용
+       $mail->SMTPAuth   = true;    // SMTP 인증 사용
+       $mail->SMTPSecure = "ssl";   // sets the prefix to the servier
+       $mail->Host = "smtp.naver.com"; // 네이버 smtp서버 주소
        $mail->Port       = 465;                    // GMAIL 서버의 SMTP 포트 설정
        $mail->Username   = "pyc2238@naver.com"; //SMTP 계정 사용자 이름
        $mail->Password   = "@zxc1268618";        // SMTP 계정 사용자 패스워드
@@ -32,8 +36,8 @@
        $mail->Subject = iconv("UTF-8","EUC-KR","NEITTER - 비밀번호 찾기 결과"); //제목
     //    $mail->Body = iconv("UTF-8", "EUC-KR", "<h1>This is a test</h1>");  //내용 / html파일이 첨부되지 않으면  Body파일이 전송된다.
     //    $mail->AltBody = iconv("UTF-8", "EUC-KR", "텍스트  This is text only alternative body.");
-       $mail->MsgHTML(file_get_contents('mailHtml.html')); //html파일
-       // $mail->AddAttachment('우마루.jpg');      // 첨부 파일 (attachment)
+       $mail->MsgHTML(file_get_contents('mailHtml.php')); //html파일
+    //    $mail->AddAttachmsent('우마루.jpg');      // 첨부 파일 (attachment)
        // $mail->AddAttachment('test.gif'); // attachment
        // $mail->AddAttachment('우마루2.png'); // attachment
      

@@ -147,7 +147,134 @@
             }
         }
 
+
+
         
+        public function getHitsId($boardNum, $id){
+            try{
+                $sql = "select * from community_hits  where boardNum=:boardNum and id=:id";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetch(PDO::FETCH_ASSOC); 
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+        public function insertHitId($id,$boardNum){
+            try{
+                $sql = "insert into community_hits (id,boardNum) values (:id,:boardNum)";
+                $pstmt = $this->pdo->prepare($sql);
+            
+                $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                
+                
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+        public function getHitsIp($boardNum, $ip){
+            try{
+                $sql = "select * from community_ip  where boardNum=:boardNum and ip=:ip";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                $pstmt->bindValue(":ip",$ip,PDO::PARAM_STR);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetch(PDO::FETCH_ASSOC); 
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+        public function insertHitIp($ip,$boardNum){
+            try{
+                $sql = "insert into community_ip (ip,boardNum) values (:ip,:boardNum)";
+                $pstmt = $this->pdo->prepare($sql);
+            
+                $pstmt->bindValue(":ip",$ip,PDO::PARAM_STR);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                
+                
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public function getCommendId($boardNum, $id){
+            try{
+                $sql = "select * from community_commend  where boardNum=:boardNum and id=:id";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
+                $pstmt->execute();
+
+                $msg = $pstmt->fetch(PDO::FETCH_ASSOC); 
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+        public function insertCommentId($id,$boardNum){
+            try{
+                $sql = "insert into community_commend (id,boardNum) values (:id,:boardNum)";
+                $pstmt = $this->pdo->prepare($sql);
+            
+                $pstmt->bindValue(":id",$id,PDO::PARAM_STR);
+                $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                
+                
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+
+
+
+        //$num번 게시글 추천수 1증가
+        public function increaseCommend($num){
+            try{
+                
+                $sql ="update community set commend=commend+1 where num = :num";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->bindValue(":num",$num,PDO::PARAM_INT);
+                
+                $pstmt->execute();
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+        }
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //게시판 검색기능 DAO
 
@@ -170,7 +297,7 @@
             return $msg;
         }
 
-
+        //게시판 제목으로 검색 수 반환
         public function getSearchTitleMsgs($search){
             try{
                 $sql = "select count(*) from  community where title LIKE '%$search%';";
@@ -204,7 +331,7 @@
             return $msg;
         }
 
-
+        //게시판 제목으로 검색 수 반환
         public function getSearchWriterMsgs($search){
             try{
                 $sql = "select count(*) from  community where writer LIKE '%$search%';";
@@ -218,7 +345,7 @@
             return $numMsgs;
         }
 
-        //게시판 글쓴이로 검색
+        //게시판 내용으로 검색
         public function searchContentMsg($search,$start,$rows){
             try{
                 $sql ="select * from community where content LIKE '%$search%' order by num desc limit :start, :rows;";
@@ -236,7 +363,7 @@
             return $msg;
         }
 
-        //게시판 내용으로 검색
+        //게시판 내용으로 검색 수 반환
         public function getSearchContentMsgs($search){
             try{
                 $sql = "select count(*) from  community where content LIKE '%$search%';";
@@ -250,13 +377,49 @@
             return $numMsgs;
         }
 
+        
+        
+         //게시판 제목 + 내용 으로 검색
+         public function searchTitleAndContentMsg($search,$start,$rows){
+            try{
+                $sql ="select * from  community where title LIKE '%$search%' or content LIKE '%$search%' order by num desc limit :start, :rows;";
+                $pstmt = $this->pdo->prepare($sql);
+                
+                $pstmt->bindValue(":start",$start,PDO::PARAM_INT);
+                $pstmt->bindValue(":rows",$rows,PDO::PARAM_INT);
+                $pstmt->execute();
 
+                $msg = $pstmt->fetchAll(PDO::FETCH_ASSOC); //레코드를 연관배열로 담아 반환한다.
+
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $msg;
+        }
+
+
+         //게시판 제목 + 내용으로 검색한 레코드 수 반환
+         public function getsearchTitleAndContentMsg($search){
+            try{
+                $sql = "select count(*) from  community where title LIKE '%$search%' or content LIKE '%$search%';";
+                $pstmt = $this->pdo->prepare($sql);
+                $pstmt->execute();
+                
+                $numMsgs = $pstmt->fetchColumn();   // 결과 세트의 다음 행에 있는 단일 컬럼을 리턴합니다.
+            }catch(PDOException $e){
+                exit($e->getMessage());
+            }
+            return $numMsgs;
+        }
+
+
+        
 
 
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //게시판 검색기능 DAO
+        //게시판 댓글기능 DAO
 
         //댓글에 대한 데이터를 저장
         public function insertComment($boardNum,$writer,$comment,$country){
@@ -341,10 +504,19 @@
         }
 
 
-
-
-
-
+        //게시물마다 달린 댓글 개수를 표시
+        public function totalConmments($boardNum){
+                try{
+                    $sql = "select count(*) from  community_comment where boardNum= :boardNum;";
+                    $pstmt = $this->pdo->prepare($sql);
+                    $pstmt->bindValue(":boardNum",$boardNum,PDO::PARAM_INT);
+                    $pstmt->execute();
+                    $numMsgs = $pstmt->fetchColumn();   // 결과 세트의 다음 행에 있는 단일 컬럼을 리턴합니다.
+                }catch(PDOException $e){
+                    exit($e->getMessage());
+                }
+                return $numMsgs;
+            }
 
     }
 ?>
